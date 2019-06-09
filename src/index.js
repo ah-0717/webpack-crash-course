@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 const component = () => {
   const elm = document.createElement('div')
   const ary = ['hello', 'webpack']
