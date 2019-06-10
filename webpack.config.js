@@ -14,5 +14,12 @@ module.export = {
   output: {
     filename: 'main.js',
     path: outputPath
+  },
+  // ドキュメントルートの設定
+  devServer: {
+    // inline: true,
+    // open: true,
+    // contentBase: path.join(__dirname, 'dist')
+    contentBase: outputPath
   }
 }
