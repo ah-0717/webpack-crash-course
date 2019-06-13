@@ -1,10 +1,5 @@
 import _ from 'lodash'
-// import { NAME, NiJou } from './utilities'
-// import * as utilities from './utilities'
-// import { NAME as NAME2} from './utilities'
-import Lion from './utilities'
-
-console.log(Lion.say())
+import './style.css'
 
 const component = () => {
   const elm = document.createElement('div')
@@ -13,4 +8,4 @@ const component = () => {
   return elm
 } 
 document.body.appendChild(component())
-
+document.body.classList.add('haikei')
