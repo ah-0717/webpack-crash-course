@@ -5,7 +5,7 @@ const outputPath = path.resolve(__dirname, 'dist')
 // console.log({outputPath})
 
 // module = file
-module.export = {
+module.exports = {
   // webpackのエントリーポイント
   // バンドル対象のファイルを指定する
   entry: './src/index.js',
@@ -15,6 +15,19 @@ module.export = {
     filename: 'main.js',
     path: outputPath
   },
+  module: {
+    rules: [
+      {
+        // useに記載したローダにどういったファイルを適用するか
+        test: /\.css$/i,
+        // ローダ 実行順序は逆順なので注意
+        use: [
+          'style-loader',
+          'css-loader'
+        ],
+      }
+    ]
+  }, 
   // ドキュメントルートの設定
   devServer: {
     // inline: true,
