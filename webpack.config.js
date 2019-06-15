@@ -25,6 +25,16 @@ module.exports = {
           'style-loader',
           'css-loader'
         ],
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg|ico)$/i,
+        loader: 'url-loader',
+        // file-loaderを有効にするために追加
+        options: {
+          // しきい値を超える場合は、nameで指定した形式で分離させる
+          limit: 2048,
+          name: './images/[name].[ext]'
+        }
       }
     ]
   }, 
