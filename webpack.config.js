@@ -35,7 +35,15 @@ module.exports = {
           limit: 2048,
           name: './images/[name].[ext]'
         }
-      }
+      },
+      {
+        test: /\.scss$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ],
+      },
     ]
   }, 
   // ドキュメントルートの設定
