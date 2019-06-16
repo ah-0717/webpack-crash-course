@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 // distまでの絶対パス生成
 const outputPath = path.resolve(__dirname, 'dist')
@@ -26,15 +27,6 @@ module.exports = {
         loader: "babel-loader" 
       },
       {
-        // useに記載したローダにどういったファイルを適用するか
-        test: /\.css$/i,
-        // ローダ 実行順序は逆順なので注意
-        use: [
-          'style-loader',
-          'css-loader'
-        ],
-      },
-      {
         test: /\.(jpe?g|png|gif|svg|ico)$/i,
         loader: 'url-loader',
         // file-loaderを有効にするために追加
@@ -45,9 +37,9 @@ module.exports = {
         }
       },
       {
-        test: /\.scss$/i,
+        test: /\.(sc|c)ss$/i,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader'
         ],
@@ -70,6 +62,10 @@ module.exports = {
       template: './src/index.html',
       // dist配下となる
       filename: './index.html'
+    }),
+    new MiniCssExtractPlugin({
+      // hashはキャシュ回避
+      filename: '[name].[hash].css'
     })
   ]
 }
