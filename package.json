@@ -18,8 +18,14 @@
   },
   "homepage": "https://github.com/ah-1991/webpack-crash-course#readme",
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
     "css-loader": "^3.0.0",
     "file-loader": "^4.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
     "live-server": "^1.2.1",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
@@ -30,6 +36,8 @@
     "webpack-dev-server": "^3.7.1"
   },
   "dependencies": {
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   }
 }
