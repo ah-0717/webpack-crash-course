@@ -1,4 +1,5 @@
 const path = require('path')
+const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 // distまでの絶対パス生成
 const outputPath = path.resolve(__dirname, 'dist')
@@ -17,6 +18,13 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        // トランスパイル対象
+        test: /\.jsx?$/,
+        // 除外
+        exclude: /node_modules/,
+        loader: "babel-loader" 
+      },
       {
         // useに記載したローダにどういったファイルを適用するか
         test: /\.css$/i,
@@ -44,6 +52,10 @@ module.exports = {
           'sass-loader'
         ],
       },
+      {
+        test: /\.html$/,
+        loader: 'html-loader'
+      }
     ]
   }, 
   // ドキュメントルートの設定
@@ -52,5 +64,12 @@ module.exports = {
     // open: true,
     // contentBase: path.join(__dirname, 'dist')
     contentBase: outputPath
-  }
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: './src/index.html',
+      // dist配下となる
+      filename: './index.html'
+    })
+  ]
 }

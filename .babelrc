@@ -1,0 +1,4 @@
+{
+  // babelを使用するにはpresets有効にする
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
