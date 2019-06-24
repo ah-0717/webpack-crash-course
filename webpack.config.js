@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 // distまでの絶対パス生成
 const outputPath = path.resolve(__dirname, 'dist')
@@ -67,5 +68,15 @@ module.exports = {
       // hashはキャシュ回避
       filename: '[name].[hash].css'
     })
-  ]
+  ],
+  // 最適化
+  optimization: {
+    minimizer: [new UglifyJsPlugin({
+      uglifyOptions: {
+        compress: {
+          drop_console: true
+        }
+      }
+    })]
+  }
 }
